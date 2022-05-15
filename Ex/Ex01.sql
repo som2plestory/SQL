@@ -381,3 +381,29 @@ select  sysdate,
         to_char(sysdate, 'SS')
 from dual;
 
+select  first_name,
+        manager_id,
+        department_id
+from employees;
+
+select *
+from departments;
+
+select *
+from locations;
+
+select *
+from countries;
+
+select *
+from regions;
+
+select *
+from jobs;
+
+select  first_name,
+        commission_pct,
+        nvl(commission_pct, 0),
+        nvl2(commission_pct, 100, 0)
+from employees;
+

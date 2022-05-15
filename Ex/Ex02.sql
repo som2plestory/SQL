@@ -1,30 +1,3 @@
-select  first_name,
-        manager_id,
-        department_id
-from employees;
-
-select *
-from departments;
-
-select *
-from locations;
-
-select *
-from countries;
-
-select *
-from regions;
-
-select *
-from jobs;
-
-select  first_name,
-        commission_pct,
-        nvl(commission_pct, 0),
-        nvl2(commission_pct, 100, 0)
-from employees;
-
-
 /************************************
 *   그룹함수
 ************************************/
@@ -82,10 +55,12 @@ from employees
 group by department_id
 order by department_id asc;
 
+/*
 select  job_id,
         avg(salary)
 from employees
 group by department_id;
+*/
 
 select  department_id,
         job_id,
