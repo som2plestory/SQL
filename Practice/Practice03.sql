@@ -80,7 +80,14 @@ order by re.region_id asc,
 -- 자신의 매니저보다 채용일(hire_date)이 빠른 
 -- 사원의 사번(employee_id), 이름(first_name)과 채용일(hire_date), 
 -- 매니저이름(first_name), 매니저입사일(hire_date)을 조회하세요. (37건)
-
+select  e.employee_id 사번,
+        e.first_name 이름,
+        e.hire_date 채용일,
+        m.first_name 매니저이름,
+        m.hire_date 매니저입사일
+from    employees e, employees m
+where   e.manager_id = m.employee_id
+and     e.hire_date < m.hire_date;
 
 -- 문제6.
 -- 나라별로 어떠한 부서들이 위치하고 있는지 파악하려고 합니다.
@@ -134,3 +141,10 @@ and     co.region_id = re.region_id;
 -- 각 사원(employee)에 대해서 사번(employee_id), 이름(first_name), 부서명(department_name), 
 -- 매니저(manager)의 이름(first_name)을 조회하세요.
 -- 부서가 없는 직원(Kimberely)도 표시합니다.(106명)
+select  e.employee_id 사번,
+        e.first_name 이름,
+        d.department_name 부서명,
+        m.first_name 매니저이름
+from    employees e, employees m, departments d
+where   e.manager_id = m.employee_id
+and     e.department_id = d.department_id(+);

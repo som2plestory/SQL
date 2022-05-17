@@ -97,11 +97,12 @@ order by avg(salary) desc;
 -- 이후입사자는 '상장이후입사' optDate 컬럼의 데이터로 출력하세요.
 -- 정렬은 입사일로 오름차순으로 정렬합니다.
 select  first_name 직원,
-        case when substr(hire_date, 1, 2) <03 then '창립멤버'
+        case when substr(hire_date, 1, 2) <03 then '창립멤버'       /* WHEN hire_date <= '02/12/31' THEN '창립맴버' */
              when substr(hire_date, 1, 2) =03 then '03년입사'
              when substr(hire_date, 1, 2) =04 then '04년입사'
-             when substr(hire_date, 1, 2) >04 then '상장이후입사'
-        END optDate
+             when substr(hire_date, 1, 2) >04 then '상장이후입사'     /* ELSE '상장이후' */
+        END optDate,
+        hire_date
 from employees
 order by hire_date asc;
 
