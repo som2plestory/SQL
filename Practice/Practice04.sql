@@ -25,22 +25,23 @@ and     salary <= 최대급여
 order by salary asc;
 
 
--- 문제3. (뭐가 무제인지 모르겠어)
+-- 문제3. 
 -- 직원 중 Steven(first_name) king(last_name)이 소속된 부서(departments)가 있는 곳의 주소를 알아보려고 한다.
 -- 도시아이디(location_id), 거리명(street_address), 우편번호(postal_code), 도시명(city), 
 -- 주(state_province), 나라아이디(country_id) 를 출력하세요. (1건)
-select  loaction_id 도시아이디,
+select  l.loaction_id 도시아이디,
         l.street_address 거리명,
         l.postal_code 우편번호,
         l.city 도시명,
-        l.loaction_id 주,
+        l.state_province 주,
         l.country_id 나라아이디
 from    locations l, departments d
 where   d.location_id = l.location_id
-and     d.department_id = (select department_id 부서명
-                           from employees
-                           where first_name = 'steven'
-                           and   last_name = 'king');
+and     d.department_id = ( select department_id 부서명
+                                   from employees
+                                   where first_name = 'Steven'
+                                   and   last_name = 'King')
+;
 
 
 -- 문제4.
@@ -118,7 +119,25 @@ and     e.salary > s.평균급여;
 
 -- 문제8.
 -- 직원 입사일이 11번째에서 15번째의 직원의 사번, 이름, 급여, 입사일을 입사일 순서로 출력하세요
- 
+select  순번,
+        사번,
+        이름,
+        급여,
+        입사일
+from    (select rownum 순번,
+                사번,
+                이름,
+                급여,
+                입사일
+        from (  select  employee_id 사번,
+                        first_name 이름,
+                        salary 급여,
+                        hire_date 입사일
+                from    employees
+                order by hire_date) ot
+         ) rn       
+where   순번>=11
+and     순번<=15;
 
 
 
