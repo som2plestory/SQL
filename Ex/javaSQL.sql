@@ -29,7 +29,7 @@ nocache;
 -- 작가 테이블 데이터 추가
 /*insert into author
 values (seq_author_id.nextval, '김문열', '경북 영양');*/
--- 작가 테이블 데이터 추가
+
 
 -- COMMIT WORK;
 
@@ -48,7 +48,7 @@ select  author_id,
         author_desc
 from author;
 
-rollback;   -- 이클립스에서 마지막흐로 추가 실행한 시점으로 돌아가기
+rollback;   -- 마지막으로 커밋한 시점으로 돌아가기 (이클립스 실행 시 자동 커밋)
 
 
 ---------------------------------북 테이블-------------------------------------\
